@@ -1,11 +1,11 @@
 <template>
-  <el-container style="height: 500px; border: 1px solid #eee">
+  <el-container style="height: 800px; border: 1px solid #eee">
     <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
       <el-menu :default-openeds="['1', '3']" :router=true>
         <el-submenu index="1">
           <template slot="title"><i class="el-icon-eleme"></i>Basic</template>
           <el-menu-item-group>
-            <template slot="title">Layout布局</template>
+            <!--<template slot="title">Layout布局</template>-->
             <el-menu-item index="1-1" route="Layout">Layout布局</el-menu-item>
             <el-menu-item index="1-2" route="Container">Container布局容器</el-menu-item>
             <el-menu-item index="1-3">选项2</el-menu-item>
@@ -61,45 +61,38 @@
             <el-dropdown-item>删除</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <span>王小虎</span>
+        <span>张某某</span>
       </el-header>
 
-      <el-main>
-        <el-table :data="tableData">
-          <el-table-column prop="date" label="日期" width="140">
-          </el-table-column>
-          <el-table-column prop="name" label="姓名" width="120">
-          </el-table-column>
-          <el-table-column prop="address" label="地址">
-          </el-table-column>
-        </el-table>
+      <el-main :style="backgroundDiv">
+
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
-export default {
-  name: 'HomeMenu',
-  data() {
-    const item = {
-      date: '2016-05-02',
-      name: '王小虎',
-      address: '上海市普陀区金沙江路 1518 弄'
-    };
-    return {
-      tableData: Array(20).fill(item)
-    }
-  },
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+
+  export default {
+    name: 'HomeMenu',
+    data() {
+      return {
+        backgroundDiv: {
+          background: 'url(' + require('../assets/mainbg.jpg') + ')',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '100% 100%'
+        },
+      }
     },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    }
-  },
-}
+    methods: {
+      handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath);
+      },
+    },
+  }
 </script>
 
 <style scoped>
